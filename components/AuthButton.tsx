@@ -36,16 +36,25 @@ export default function AuthButton() {
   };
 
   if (loading) {
-    return <div className="h-10 w-24 animate-pulse rounded-lg bg-gray-200" />;
+    return (
+      <div className="h-10 w-28 animate-pulse rounded-full bg-gray-200" />
+    );
   }
 
   if (user) {
     return (
       <div className="flex items-center gap-3">
-        <span className="text-sm text-gray-600">{user.email}</span>
+        <div className="flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-200 text-sm font-semibold text-indigo-700">
+            {user.email?.charAt(0).toUpperCase() ?? "U"}
+          </div>
+          <span className="hidden text-sm font-medium text-gray-700 sm:inline">
+            {user.email}
+          </span>
+        </div>
         <button
           onClick={handleSignOut}
-          className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
+          className="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 hover:shadow"
         >
           Sign Out
         </button>
@@ -56,7 +65,7 @@ export default function AuthButton() {
   return (
     <button
       onClick={handleSignIn}
-      className="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-md border border-gray-300 transition-colors hover:bg-gray-50"
+      className="flex w-full items-center justify-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-gray-700 shadow-lg border border-gray-200 transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
     >
       <svg className="h-5 w-5" viewBox="0 0 24 24">
         <path
